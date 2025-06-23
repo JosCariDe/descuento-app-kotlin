@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import edu.sena.descuentosapp.components.MainButton
 import edu.sena.descuentosapp.components.MainTextField
 import edu.sena.descuentosapp.components.SpaceH
 
@@ -51,7 +52,7 @@ fun ContentHomeView() {
         modifier = Modifier
             .padding(10.dp)
             .fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
+        //verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         var precio by remember { mutableStateOf("") }
@@ -60,5 +61,9 @@ fun ContentHomeView() {
         MainTextField(value = precio, onValueChange = {precio = it}, label = "Precio")
         SpaceH()
         MainTextField(value = precio, onValueChange = {precio = it}, label = "Descuento")
+        SpaceH(10.dp)
+        MainButton(text = "Generar Descuento") { }
+        SpaceH()
+        MainButton(text = "Limpiar", color = Color.Red) { }
     }
 }
