@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -24,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import edu.sena.descuentosapp.components.MainButton
 import edu.sena.descuentosapp.components.MainTextField
 import edu.sena.descuentosapp.components.SpaceH
+import edu.sena.descuentosapp.components.TwoCards
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -50,13 +52,17 @@ fun HomeView(
 fun ContentHomeView() {
     Column(
         modifier = Modifier
-            .padding(top = 100.dp)
+            .padding(top = 125.dp)
             .fillMaxSize(),
         //verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         var precio by remember { mutableStateOf("") }
         var descuento by remember { mutableStateOf("") }
+        var precioDescuento by remember { mutableDoubleStateOf(0.0) }
+        var totalDescuento by remember { mutableDoubleStateOf(0.0) }
+
+        TwoCards(title1 = "Total", number1 = totalDescuento, title2 = "Descuento", number2 = precioDescuento)
 
         MainTextField(value = precio, onValueChange = {precio = it}, label = "Precio")
         SpaceH()
