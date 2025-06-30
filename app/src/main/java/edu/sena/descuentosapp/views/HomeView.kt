@@ -62,7 +62,7 @@ fun ContentHomeView() {
         var precioDescuento by remember { mutableDoubleStateOf(0.0) }
         var totalDescuento by remember { mutableDoubleStateOf(0.0) }
 
-        TwoCar10ds(title1 = "Total", number1 = totalDescuento, title2 = "Descuento", number2 = precioDescuento)
+        TwoCards(title1 = "Total", number1 = totalDescuento, title2 = "Descuento", number2 = precioDescuento)
 
         MainTextField(value = precio, onValueChange = {precio = it}, label = "Precio")
         SpaceH()
