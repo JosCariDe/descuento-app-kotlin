@@ -62,14 +62,29 @@ fun ContentHomeView() {
         var precioDescuento by remember { mutableDoubleStateOf(0.0) }
         var totalDescuento by remember { mutableDoubleStateOf(0.0) }
 
-        TwoCards(title1 = "Total", number1 = totalDescuento, title2 = "Descuento", number2 = precioDescuento)
+        TwoCar10ds(title1 = "Total", number1 = totalDescuento, title2 = "Descuento", number2 = precioDescuento)
 
         MainTextField(value = precio, onValueChange = {precio = it}, label = "Precio")
         SpaceH()
-        MainTextField(value = precio, onValueChange = {precio = it}, label = "Descuento")
+        MainTextField(value = descuento, onValueChange = {descuento = it}, label = "Descuento")
         SpaceH(10.dp)
-        MainButton(text = "Generar Descuento") { }
+        MainButton(text = "Generar Descuento") {
+            precioDescuento = calcularPrecio(precio.toDouble(), descuento.toDouble())
+            totalDescuento = calcularDescuento(precio.toDouble(), descuento.toDouble())
+        }
         SpaceH()
         MainButton(text = "Limpiar", color = Color.Red) { }
     }
+}
+
+fun calcularPrecio(precio: Double, descuento: Double): Double {
+    val res = precio - calcularDescuento(precio, descuento)
+    return kotlin.math.round(res * 100) / 100.0
+}
+
+fun calcularDescuento(precio: Double, descuento: Double): Double {
+
+    val res = precio * (1  - descuento / 100)
+    return kotlin.math.round(res * 100) / 100.0
+
 }

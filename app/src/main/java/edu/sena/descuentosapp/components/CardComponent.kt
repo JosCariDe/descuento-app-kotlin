@@ -29,7 +29,7 @@ fun TwoCards(title1: String, number1: Double, title2: String, number2: Double ) 
                 .weight(1f)
         )
         SpaceW(10.dp)
-        MainCard(title = title2,number = number1,
+        MainCard(title = title2,number = number2,
             modifier = Modifier
                 .padding(end = 30.dp)
                 .weight(1f)
