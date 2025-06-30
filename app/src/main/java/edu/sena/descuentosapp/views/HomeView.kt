@@ -37,7 +37,7 @@ fun HomeView(
                 title = { Text(text = "Apps DESCUENTOS", color = Color.White) },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary
-                )
+                ),
             )
         }
     ) {
@@ -50,7 +50,7 @@ fun HomeView(
 fun ContentHomeView() {
     Column(
         modifier = Modifier
-            .padding(10.dp)
+            .padding(top = 100.dp)
             .fillMaxSize(),
         //verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
