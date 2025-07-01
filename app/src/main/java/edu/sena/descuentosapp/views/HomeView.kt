@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import edu.sena.descuentosapp.components.Alert
 import edu.sena.descuentosapp.components.MainButton
 import edu.sena.descuentosapp.components.MainTextField
 import edu.sena.descuentosapp.components.SpaceH
@@ -61,6 +62,7 @@ fun ContentHomeView() {
         var descuento by remember { mutableStateOf("") }
         var precioDescuento by remember { mutableDoubleStateOf(0.0) }
         var totalDescuento by remember { mutableDoubleStateOf(0.0) }
+        var showAlert by remember { mutableStateOf(false) }
 
         TwoCards(title1 = "Total", number1 = totalDescuento, title2 = "Descuento", number2 = precioDescuento)
 
@@ -69,8 +71,12 @@ fun ContentHomeView() {
         MainTextField(value = descuento, onValueChange = {descuento = it}, label = "Descuento")
         SpaceH(10.dp)
         MainButton(text = "Generar Descuento") {
-            precioDescuento = calcularPrecio(precio.toDouble(), descuento.toDouble())
-            totalDescuento = calcularDescuento(precio.toDouble(), descuento.toDouble())
+            if (precio != "" && descuento != "") {
+                precioDescuento = calcularPrecio(precio.toDouble(), descuento.toDouble())
+                totalDescuento = calcularDescuento(precio.toDouble(), descuento.toDouble())
+            }else {
+                showAlert = true
+            }
         }
         SpaceH()
         MainButton(text = "Limpiar", color = Color.Red) {
@@ -78,6 +84,15 @@ fun ContentHomeView() {
             totalDescuento = 0.0
             precio = ""
             descuento = ""
+        }
+
+        if (showAlert) {
+            Alert(
+                title = "ALERTA",
+                message= "Escribe el precio y descuento",
+                confirmText =  "Aceptar",
+                onConfirmClick = {showAlert = false},
+            ) { }
         }
     }
 }
