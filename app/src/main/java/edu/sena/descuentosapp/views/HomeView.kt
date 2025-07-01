@@ -73,7 +73,12 @@ fun ContentHomeView() {
             totalDescuento = calcularDescuento(precio.toDouble(), descuento.toDouble())
         }
         SpaceH()
-        MainButton(text = "Limpiar", color = Color.Red) { }
+        MainButton(text = "Limpiar", color = Color.Red) {
+            precioDescuento = 0.0
+            totalDescuento = 0.0
+            precio = ""
+            descuento = ""
+        }
     }
 }
 
